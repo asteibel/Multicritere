@@ -25,7 +25,7 @@ public class Alternative {
 	public void initialisation(int n, int k){
 		listeEvaluation = new Evaluation[n];
 		for(int i =0;i<listeEvaluation.length;i++)
-			listeEvaluation[i].initialisation(k);
+			listeEvaluation[i] = new Evaluation(k);
 	}
 
 	public String getNom() {

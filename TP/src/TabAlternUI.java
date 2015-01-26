@@ -13,9 +13,19 @@ public class TabAlternUI extends JFrame{
 		setPreferredSize(new Dimension(500, 400));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		tab = new TableauAlternatives();
+		
 		pack();
 	}
 	
+	public TableauAlternatives getTab() {
+		return tab;
+	}
+
+	public void setTab(TableauAlternatives tab) {
+		this.tab = tab;
+	}
+
 	public void initialisation(){
 		
 	}

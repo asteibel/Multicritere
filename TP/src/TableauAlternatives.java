@@ -36,5 +36,35 @@ public class TableauAlternatives {
 			listeAlternatives[i] = new Alternative(n,k);
 		}
 	}
+	public int getN() {
+		return n;
+	}
+	public void setN(int n) {
+		this.n = n;
+	}
+	public int getM() {
+		return m;
+	}
+	public void setM(int m) {
+		this.m = m;
+	}
+	public int getK() {
+		return k;
+	}
+	public void setK(int k) {
+		this.k = k;
+	}
+	public String[] getListeCriteres() {
+		return listeCriteres;
+	}
+	public void setListeCriteres(String[] listeCriteres) {
+		this.listeCriteres = listeCriteres;
+	}
+	public Alternative[] getListeAlternatives() {
+		return listeAlternatives;
+	}
+	public void setListeAlternatives(Alternative[] listeAlternatives) {
+		this.listeAlternatives = listeAlternatives;
+	}
 	
 }

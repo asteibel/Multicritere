@@ -23,11 +23,11 @@ public class TableauListener implements MouseListener{
 		Scanner sc = new Scanner(System.in);
 		
 		for(int l=0;l<tab.getTab().getK();l++){
-			System.out.println("Rentrez la note max "+l+1);
-			tab.getTab().getListeAlternatives()[j-1].getListeEvaluation()[i-1].getEvaluation()[l].setMax(sc.nextInt());
-			System.out.println("Rentrez la note min "+l+1);
-			tab.getTab().getListeAlternatives()[j-1].getListeEvaluation()[i-1].getEvaluation()[l].setMin(sc.nextInt());
-			System.out.println(tab.getTab().getListeAlternatives()[j-1].getListeEvaluation()[i-1].getEvaluation()[l].getMin() +"min");
+			System.out.println("Rentrez la note min "+(l+1));
+			tab.getTab().getListeAlternatives()[i-1].getListeEvaluation()[j-1].getEvaluation()[l].setMin(sc.nextInt());
+			System.out.println("Rentrez la note max "+(l+1));
+			tab.getTab().getListeAlternatives()[i-1].getListeEvaluation()[j-1].getEvaluation()[l].setMax(sc.nextInt());
+			//System.out.println(tab.getTab().getListeAlternatives()[j-1].getListeEvaluation()[i-1].getEvaluation()[l].getMin() +"min");
 		}
 
 		tab.paint2();

@@ -1,9 +1,16 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -96,7 +103,19 @@ public class TabAlternUI extends JFrame{
 			
 		}
 		
-		this.add(grille);
+		BorderLayout bl = new BorderLayout();
+		this.setLayout(bl);
+		this.add(grille,bl.CENTER);
+		JButton bouton = new JButton("Lancer le calcul");
+		bouton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("click");
+			}
+		});
+		this.add(bouton,bl.SOUTH);
 		
 	}
 	

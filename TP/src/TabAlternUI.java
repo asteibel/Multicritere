@@ -83,10 +83,10 @@ public class TabAlternUI extends JFrame{
 		for(int i =1;i<m+1;i++)
 			for(int j=1;j<n+1;j++){
 				JPanel nvPanel = new JPanel();
-				JLabel nvLab = new JLabel(tab.getListeAlternatives()[j-1].getListeEvaluation()[i-1].toString());
+				JLabel nvLab = new JLabel(tab.getListeAlternatives()[i-1].getListeEvaluation()[j-1].toString());
 				nvPanel.add(nvLab);
 				tabPanel[i][j].add(nvPanel);
-				System.out.println("notes "+tab.getListeAlternatives()[j-1].getListeEvaluation()[i-1].toString());
+				System.out.println("notes "+tab.getListeAlternatives()[i-1].getListeEvaluation()[j-1].toString());
 			}
 		
 		for(int i =0;i<m+1;i++){

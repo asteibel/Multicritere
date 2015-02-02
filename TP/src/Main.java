@@ -52,6 +52,14 @@ public class Main {
 		
 		tab.paint();
 		tab.setVisible(true);
+		
+		TabPrefUI tabPrefUI = new TabPrefUI(n,listeCriteres);
+		tabPrefUI.paint();
+		tabPrefUI.setVisible(true);
+		
+		TabImpUI tabImpUI = new TabImpUI(n, listeCriteres);
+		tabImpUI.paint();
+		tabImpUI.setVisible(true);
 	}
 	
 	public void initialisation(){

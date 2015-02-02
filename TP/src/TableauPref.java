@@ -10,15 +10,20 @@ public class TableauPref {
 	 */
 	int n;
 	
-	double[][] pref;
+	float[][] tabPref;
 	
 	public TableauPref(int n){
 		this.n=n;
 		
-		for(int i=0;i<n;i++)
-			for(int j=0;j<n;j++)
-				if(j==i)
-					pref[i][j]=1;
+		tabPref=new float[n][n];
+	}
+	
+	public void setPref(int i, int j, float pref){
+		tabPref[i][j]=pref;
+	}
+	
+	public float[][] getTabPref(){
+		return tabPref;
 	}
 	
 }

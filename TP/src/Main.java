@@ -11,6 +11,7 @@ public class Main {
 
 	static int n;
 	static String[] listeCriteres;
+	static TableauAlternatives tabAlt;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -78,5 +79,54 @@ public class Main {
 	}
 	
 
+	public void nouveau(){
+		
+		Evaluation[] eval1 = new Evaluation[3];//Rajouté par Audric pour par erreur 
+		
+		int[] tab1 = eval1[0].calculDistProb();
+//		System.out.println(tab1[0]+" ;"+tab1[1]+" ;"+tab1[2]+" ;"+tab1[3]);
+		
+		Trapeze[] lTrap1 = new Trapeze[tabAlt.getN()];
+		
+		for(int i=0;i<eval1.length;i++){
+			
+				lTrap1[i] = new Trapeze(eval1[i].calculDistProb());
+			
+		}
+		agregation(lTrap1);
+	}
+	
+	public int[] agregation(Trapeze[] listeTrap){
+		double[][] tabInterPoid = {{0.3,0,0,0.1,0.05},{0,0.2,0,0.1,0.05},{0,0,0.2,0.1,0.05},{0.1,0.1,0.1,0.2,0},{0.05,0.05,0.05,0,0.1}};
+		double a = 0;
+		double b = 0;
+		double c = 0;
+		double d = 0;
+		
+		for(int i=0;i<tabInterPoid.length;i++){
+			a+=tabInterPoid[i][i]*listeTrap[i].getPointTrap()[0];
+			b+=tabInterPoid[i][i]*listeTrap[i].getPointTrap()[1];
+			c+=tabInterPoid[i][i]*listeTrap[i].getPointTrap()[2];
+			d+=tabInterPoid[i][i]*listeTrap[i].getPointTrap()[3];
+				for(int j=0;j<listeTrap.length;j++){
+					if(i>j)
+					a+=1/2*tabInterPoid[i][j]*(Math.abs(listeTrap[i].getPointTrap()[0]-listeTrap[j].getPointTrap()[0]));
+					b+=1/2*tabInterPoid[i][j]*(Math.abs(listeTrap[i].getPointTrap()[1]-listeTrap[j].getPointTrap()[1]));
+					c+=1/2*tabInterPoid[i][j]*(Math.abs(listeTrap[i].getPointTrap()[2]-listeTrap[j].getPointTrap()[2]));
+					d+=1/2*tabInterPoid[i][j]*(Math.abs(listeTrap[i].getPointTrap()[3]-listeTrap[j].getPointTrap()[3]));
+				}
+		}
 
+			System.out.println(a);
+			System.out.println(b);
+			System.out.println(c);
+			System.out.println(d);
+
+
+
+		
+		return null;
+	}
+	
+	
 }

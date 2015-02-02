@@ -77,58 +77,6 @@ public class Main {
 		tabImpUI.setVisible(true);
 	}
 	
-	public void initialisation(){
-		
-		
-		
-		/**
-		 * Creation du GridLayout + creation d'un tab de jPanel
-		 *//**
-		JPanel grille = new JPanel(new GridLayout(m+1,n+1));
-		JPanel[][] tabPanel = new JPanel[m+1][n+1];
-		for(int i =0;i<m+1;i++)
-			for(int j=0;j<n+1;j++){
-				tabPanel[i][j]=new JPanel();
-				tabPanel[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
-				tabPanel[i][j].addMouseListener(new TableauListener(i, j, tab));
-			}
-				
-		/**
-		 * Ajout des noms des alternatives
-		 *//**
-		for(int i =1;i<m+1;i++){
-			JPanel nvPanel = new JPanel();
-			JLabel nvLab = new JLabel(tab.getTab().getListeAlternatives()[i-1].getNom());
-			nvPanel.add(nvLab);
-			tabPanel[i][0].add(nvPanel);
-		}
-		/**
-		 * Ajout des noms des criteres
-		 *//**
-		for(int i =1;i<n+1;i++){
-			JPanel nvPanel = new JPanel();
-			JLabel nvLab = new JLabel(listeCriteres[i-1]);
-			nvPanel.add(nvLab);
-			tabPanel[0][i].add(nvPanel);
-		}
-		
-		for(int i =1;i<m+1;i++)
-			for(int j=1;j<n+1;j++){
-				JPanel nvPanel = new JPanel();
-				JLabel nvLab = new JLabel(tab.getTab().getListeAlternatives()[i-1].getListeEvaluation()[i-1].toString());
-				nvPanel.add(nvLab);
-				tabPanel[i][j].add(nvPanel);
-			}
-		
-		for(int i =0;i<m+1;i++){
-			for(int j=0;j<n+1;j++){
-				grille.add(tabPanel[i][j]);
-			}
-			
-		}
-		
-		tab.add(grille);
-		 */
-	}
+
 
 }

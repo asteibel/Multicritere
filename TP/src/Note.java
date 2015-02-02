@@ -31,4 +31,8 @@ public class Note {
 	public void setMax(int max) {
 		this.max = max;
 	}
+	
+	public String toString(){
+		return "["+min+","+max+"]";
+	}
 }

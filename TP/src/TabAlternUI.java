@@ -23,12 +23,15 @@ public class TabAlternUI extends JFrame{
 	int m;
 	int k;
 	
+	TableauPref tabPref;
+	
+
 	JPanel grille;
 
 	public TabAlternUI(){
 		super();
 		setTitle("Tableau des Alternatives");
-		setPreferredSize(new Dimension(500, 400));
+		setPreferredSize(new Dimension(1200, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
@@ -45,8 +48,10 @@ public class TabAlternUI extends JFrame{
 		this.tab = tab;
 	}
 	
-	public void initialisation(int i, int j, int k){
-		
+	public void initialisation(int n, int m, int k){
+		this.n=n;
+		this.m=m;
+		this.k=k;
 	}
 
 	public void paint(){
@@ -112,7 +117,8 @@ public class TabAlternUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("click");
+				Calcul calcul = new Calcul(tab,tabPref);
+				calcul.lancerLesCalculs();
 			}
 		});
 		this.add(bouton,bl.SOUTH);
@@ -150,5 +156,13 @@ public class TabAlternUI extends JFrame{
 		this.k = k;
 	}
 	
+
+	public TableauPref getTabPref() {
+		return tabPref;
+	}
+
+	public void setTabPref(TableauPref tabPref) {
+		this.tabPref = tabPref;
+	}
 	
 }

@@ -1,16 +1,20 @@
 
 public class Trapeze {
-private int[] pointTrap;
+private double[] pointTrap;
 
-public Trapeze(int[] tab){
+public Trapeze(double[] tab){
 	this.pointTrap=tab;
 }
 
-public int[] getPointTrap() {
+public Trapeze() {
+	// TODO Auto-generated constructor stub
+}
+
+public double[] getPointTrap() {
 	return pointTrap;
 }
 
-public void setPointTrap(int[] pointTrap) {
+public void setPointTrap(double[] pointTrap) {
 	this.pointTrap = pointTrap;
 }
 

@@ -8,68 +8,165 @@ import javax.swing.JPanel;
 
 
 public class Main {
-
+	
+	/**
+	 * Nombre de critères
+	 */
 	static int n;
 	static String[] listeCriteres;
+	static TabAlternUI tabUI;
 	static TableauAlternatives tabAlt;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		creerTabAlternatives();
 		
-		creerTabPreferences(n, listeCriteres);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Charger l'exemple ? (o/n)");
+		if(sc.next().equals("o"))
+			chargerExemple();
+		else{
+			creerTabAlternatives(sc);
+			
+			creerTabPreferences(n, listeCriteres);
+		}
+			
 		
 		creerTabImportances(n,listeCriteres);
 	}
 	
-	public static void creerTabAlternatives(){
-		TabAlternUI tab = new TabAlternUI();
+	public static void chargerExemple(){
 		
-		//	int n;
-			Scanner sc = new Scanner(System.in);
+		tabUI = new TabAlternUI();
+		n=5;
+		int m=2;
+		int k=5;
+		tabUI.initialisation(k, m, k);
+		listeCriteres=new String[5];
+		listeCriteres[0]="Physical";
+		listeCriteres[1]="Psychological";
+		listeCriteres[2]="Economic";
+		listeCriteres[3]="Media";
+		listeCriteres[4]="Environmental";
+		
+		tabAlt = new TableauAlternatives();
+		tabAlt.initialisation(k, m, k);
+		tabAlt.setListeCriteres(listeCriteres);
+		
+		Alternative alt1 = new Alternative(n, k);
+		Note[] notes11 = { new Note(6, 9), new Note(6, 9), new Note(5, 9),
+				new Note(4, 8), new Note(4, 7) };
+		Note[] notes12 = { new Note(6, 9), new Note(7, 10), new Note(6, 9),
+				new Note(6, 9), new Note(7, 9) };
+		Note[] notes13 = { new Note(6, 9), new Note(6, 9), new Note(6, 9),
+				new Note(4, 7), new Note(4, 7) };
+		Note[] notes14 = { new Note(9, 10), new Note(9, 10), new Note(9, 10),
+				new Note(8, 11), new Note(8, 11) };
+		Note[] notes15 = { new Note(4, 7), new Note(4, 7), new Note(6, 7),
+				new Note(4, 7), new Note(6, 7) };
+		alt1.getListeEvaluation()[0].setEvaluation(notes11);
+		alt1.getListeEvaluation()[1].setEvaluation(notes12);
+		alt1.getListeEvaluation()[2].setEvaluation(notes13);
+		alt1.getListeEvaluation()[3].setEvaluation(notes14);
+		alt1.getListeEvaluation()[4].setEvaluation(notes15);
+
+		Alternative alt2 = new Alternative(n, k);
+		Note[] notes21 = { new Note(10, 13), new Note(12, 15),
+				new Note(12, 15), new Note(12, 15), new Note(9, 13) };
+		Note[] notes22 = { new Note(13, 16), new Note(13, 16),
+				new Note(15, 17), new Note(15, 16), new Note(14, 16) };
+		Note[] notes23 = { new Note(15, 17), new Note(15, 17),
+				new Note(15, 17), new Note(15, 17), new Note(15, 17) };
+		Note[] notes24 = { new Note(8, 11), new Note(8, 11), new Note(8, 11),
+				new Note(7, 10), new Note(7, 10) };
+		Note[] notes25 = { new Note(15, 17), new Note(15, 17),
+				new Note(13, 16), new Note(13, 16), new Note(13, 16) };
+		alt2.getListeEvaluation()[0].setEvaluation(notes21);
+		alt2.getListeEvaluation()[1].setEvaluation(notes22);
+		alt2.getListeEvaluation()[2].setEvaluation(notes23);
+		alt2.getListeEvaluation()[3].setEvaluation(notes24);
+		alt2.getListeEvaluation()[4].setEvaluation(notes25);
+		
+		Alternative[] listeAlt = {alt1, alt2};
+		tabAlt.setListeAlternatives(listeAlt);
+		
+		tabAlt.getListeAlternatives()[0].setNom("Evacuate");
+		tabAlt.getListeAlternatives()[1].setNom("Sheltering");
+		
+		tabUI.setTab(tabAlt);
+		
+		tabUI.paint();
+		tabUI.setVisible(true);
+		
+		
+		TabPrefUI tabPrefUI = new TabPrefUI(n,listeCriteres,tabUI);
+		double[][] tabPref = { { 0.3, 0, 0, 0.1, 0.05 },
+				{ 0, 0.2, 0, 0.1, 0.05 }, { 0, 0, 0, 0.1, 0.05 },
+				{ 0, 0, 0, 0.2, 0 }, { 0, 0, 0, 0, 0.1 } };
+		tabPrefUI.getTab().setTabPref(tabPref);
+		tabPrefUI.paint();
+		tabPrefUI.setVisible(true);
+		tabUI.setTabPref(tabPrefUI.getTab());
+		
+		
+		System.out.println("Exemple chargé");
+	}
+	
+	
+	
+	public static void creerTabAlternatives(Scanner sc){
+			tabUI = new TabAlternUI();
+
+			/**
+			 * Tout d'abord, l'utilisateur est invité à rentrer le nombre de critères et leurs noms
+			 */
+			
 			System.out.println("Combien de critères?");
 			n=sc.nextInt();
-			tab.setN(n);
-			//System.out.println(tab.getTab().getN()+" critères");
-			//String[] listeCriteres = new String[n];
+			tabUI.setN(n);
 			listeCriteres = new String[n];
 			for(int i =0;i<listeCriteres.length;i++){
 				System.out.println("Entrez le critère n°"+(i+1));
 				listeCriteres[i]=sc.next();
 			}
-			
-			int m;
-			System.out.println("Combien d'alternatives?");
-			m=sc.nextInt();
-			tab.setM(m);
-			//System.out.println(tab.getTab().getM()+" alternatives");
-			
+			/**
+			 * L'utilisateur rentre ensuite le nombre d'évaluateurs et d'alternatives
+			 */
 			int k;
 			System.out.println("Combien d'évaluateurs?");
 			k=sc.nextInt();
-			tab.setK(k);
-			//System.out.println(tab.getTab().getK()+" évaluateurs");
+			tabUI.setK(k);
+			int m;
+			System.out.println("Combien d'alternatives?");
+			m=sc.nextInt();
+			tabUI.setM(m);
 			
-			tab.getTab().initialisation(n, m, k);
-			tab.getTab().setListeCriteres(listeCriteres);
-			System.out.println(n+" critères, "+m+" alternatives, "+k+" évaluateurs.");
-			for(int i =0;i<listeCriteres.length;i++)
-				System.out.println(listeCriteres[i]);
 			
+			tabUI.getTab().initialisation(n, m, k);
+			tabUI.getTab().setListeCriteres(listeCriteres);
+			/**
+			 * L'utilisateur rentre le noms des alternatives
+			 */
 			for(int i =0;i<m;i++){
 				System.out.println("Entrez l'alternative n°"+(i+1));
-				tab.getTab().getListeAlternatives()[i].setNom(sc.next());
+				tabUI.getTab().getListeAlternatives()[i].setNom(sc.next());
 			}
+			/**
+			 * Récap dans la console
+			 */
+			System.out.println(n+" critères, "+m+" alternatives, "+k+" évaluateurs.");
 			
-			tab.paint();
-			tab.setVisible(true);
+			
+			tabAlt=tabUI.getTab();
+			tabUI.paint();
+			tabUI.setVisible(true);
 	}
 	
 	public static void creerTabPreferences(int n, String[] listeCriteres){
-		TabPrefUI tabPrefUI = new TabPrefUI(n,listeCriteres);
+		TabPrefUI tabPrefUI = new TabPrefUI(n,listeCriteres,tabUI);
 		tabPrefUI.paint();
 		tabPrefUI.setVisible(true);
+		tabUI.setTabPref(tabPrefUI.getTab());
 	}
 	
 	public static void creerTabImportances(int n, String[] listeCriteres){
@@ -79,22 +176,6 @@ public class Main {
 	}
 	
 
-	public void nouveau(){
-		
-		Evaluation[] eval1 = new Evaluation[3];//Rajouté par Audric pour par erreur 
-		
-		int[] tab1 = eval1[0].calculDistProb();
-//		System.out.println(tab1[0]+" ;"+tab1[1]+" ;"+tab1[2]+" ;"+tab1[3]);
-		
-		Trapeze[] lTrap1 = new Trapeze[tabAlt.getN()];
-		
-		for(int i=0;i<eval1.length;i++){
-			
-				lTrap1[i] = new Trapeze(eval1[i].calculDistProb());
-			
-		}
-		agregation(lTrap1);
-	}
 	
 	public int[] agregation(Trapeze[] listeTrap){
 		double[][] tabInterPoid = {{0.3,0,0,0.1,0.05},{0,0.2,0,0.1,0.05},{0,0,0.2,0.1,0.05},{0.1,0.1,0.1,0.2,0},{0.05,0.05,0.05,0,0.1}};

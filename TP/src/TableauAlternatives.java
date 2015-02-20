@@ -36,18 +36,30 @@ public class TableauAlternatives {
 			listeAlternatives[i] = new Alternative(n,k);
 		}
 	}
+	/**
+	 * 
+	 * @return nombre de critères
+	 */
 	public int getN() {
 		return n;
 	}
 	public void setN(int n) {
 		this.n = n;
 	}
+	/**
+	 * 
+	 * @return nombre d'alternatives
+	 */
 	public int getM() {
 		return m;
 	}
 	public void setM(int m) {
 		this.m = m;
 	}
+	/**
+	 * 
+	 * @return nombre d'évaluateurs
+	 */
 	public int getK() {
 		return k;
 	}

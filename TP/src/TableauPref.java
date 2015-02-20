@@ -10,20 +10,22 @@ public class TableauPref {
 	 */
 	int n;
 	
-	float[][] tabPref;
+	double[][] tabPref;
 	
 	public TableauPref(int n){
 		this.n=n;
 		
-		tabPref=new float[n][n];
+		tabPref=new double[n][n];
 	}
 	
 	public void setPref(int i, int j, float pref){
 		tabPref[i][j]=pref;
 	}
 	
-	public float[][] getTabPref(){
+	public double[][] getTabPref(){
 		return tabPref;
 	}
-	
+	public void setTabPref(double[][] tabPref){
+		this.tabPref=tabPref;
+	}
 }

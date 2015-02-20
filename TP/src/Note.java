@@ -10,12 +10,17 @@ public class Note {
 	int min;
 	int max;
 	
-	public void Note(int min, int max){
+	public Note(int min, int max){
 		this.min = min;
 		this.max = max;
 	}
 
 	
+	public Note() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getMin() {
 		return min;
 	}

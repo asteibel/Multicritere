@@ -20,9 +20,11 @@ public class TabPrefUI extends JFrame{
 	 */
 	String[] listeCriteres;
 	
+	TabAlternUI tabAltUI;
+	
 	JPanel grille;
 	
-	public TabPrefUI(int n,String[] listeCriteres){
+	public TabPrefUI(int n,String[] listeCriteres,TabAlternUI tabAltUI){
 		
 		super();
 		setTitle("Préférences");
@@ -33,6 +35,7 @@ public class TabPrefUI extends JFrame{
 		
 		this.n=n;
 		this.listeCriteres=listeCriteres;
+		this.tabAltUI=tabAltUI;
 		tab = new TableauPref(n);
 		
 		pack();
@@ -99,6 +102,7 @@ public void paint2(){
 	paint();
 	pack();
 	repaint();
+	tabAltUI.setTabPref(tab);
 }
 
 public TableauPref getTab() {

@@ -20,10 +20,10 @@ public class Evaluation {
 			listeNotes[i] = new Note();
 	}
 	
-	public int[] calculDistProb(){
-		int[] tab= new int[4];
-		int a=1000000;
-		int d=0,b=0,c=0;
+	public double[] calculDistProb(){
+		double[] tab= new double[4];
+		double a=1000000;
+		double d=0,b=0,c=0;
 
 
 		if(listeNotes[0].getMax()<listeNotes[1].getMin()){
